@@ -1,14 +1,15 @@
 import React from 'react';
+import { FaEnvelope, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const skills = [
-  "JavaScript", "React", "Node.js", "MongoDB", "Express", "Tailwind CSS", "HTML", "CSS", "Git", "REST APIs"
+  "HTML", "CSS","JavaScript", "React", "Node.js", "Express", "MongoDB", "Tailwind CSS",  "Git", "REST APIs"
 ];
 
 const Recruiter = () => {
   return (
     <div className="min-h-screen bg-zinc-950 text-white px-6 py-10 pt-20">
       {/* Title */}
-      <h1 className="text-5xl sm:text-6xl text-center font-bold mb-16 tracking-wide">
+      <h1 className="text-5xl sm:text-6xl text-center font-bold mb-16 tracking-wide pt-1">
         <span className="text-green-500">Recruiter</span> View 🧑‍💼
       </h1>
 
@@ -44,7 +45,7 @@ const Recruiter = () => {
       <section className="text-center">
         <h2 className="text-3xl font-semibold mb-4 border-b-2 border-zinc-700 inline-block">Contact</h2>
         <p className="text-zinc-300 mb-2">📧 chinthojusharan@gmail.com</p>
-        <p className="text-zinc-300">🔗 <a href="https://www.linkedin.com/in/sharan-cchinthoju-16067331b" target="_blank" className="text-blue-400 hover:underline">LinkedIn Profile</a></p>
+        <p className="text-zinc-300">🔗 <a href="https://www.linkedin.com/in/sharan-chinthoju-16067331b" target="_blank" className="text-blue-400 hover:underline">LinkedIn Profile</a></p>
       </section>
     </div>
   );
