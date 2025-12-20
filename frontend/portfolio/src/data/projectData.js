@@ -2,7 +2,7 @@ const projectData = [
   {
     title: "AI - Voice Assistant",
     slug: "ai-voice-assistant",
-    image: "/public/assets/screenshots/ai-assistant/ss4.png",
+    image: "/assets/screenshots/ai-assistant/ss4.png",
     description: "AI voice assistant with voice-based commands.",
     fullDescription:
       "An AI voice assistant built using modern web technologies. Users can interact using voice commands and get instant responses. Simple, hands-free, and designed for smooth everyday use.",
@@ -25,7 +25,7 @@ const projectData = [
   {
     title: "Trendly - E Commerce website",
     slug: "trendly",
-    image: "/public/assets/screenshots/trendly/ss1.png",
+    image: "/assets/screenshots/trendly/ss1.png",
     description: "E-Commerce website for clothes shopping",
     fullDescription:
       "A website built for online shopping using MERN stack. Users can buy clothes online by Paying online or cash on delivery.",
