@@ -10,6 +10,7 @@ const Hero = () => {
         <p className="text-gray-400 max-w-xl mx-auto">
           A Full Stack Developer building modern web experiences with the MERN stack.
         </p>
+        <img data-atropos-offset="5" class="position-relative" src="https://craftohtml.themezaa.com/images/demo-freelancer-06.png" alt="" data-no-retina="" style="transition-duration: 300ms; transform: translate3d(0px, 0px, 0px);"></img>
       </div>
     </section>
   );

@@ -1,51 +1,193 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import projectData from "../data/projectData";
+import { useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLinkedin, FaTwitter } from "react-icons/fa";
 
-const skills = [
-  "HTML", "CSS","JavaScript", "React", "Node.js", "Express", "MongoDB", "Tailwind CSS",  "Git", "REST APIs"
-];
-
 const Recruiter = () => {
+  const projects = projectData;
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-zinc-950 text-white px-6 py-10 pt-20">
-      {/* Title */}
-      <h1 className="text-5xl sm:text-6xl text-center font-bold mb-16 tracking-wide pt-1">
+    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black text-white px-6 py-10 pt-20">
+      {/* Hero Title */}
+      <h1 className="text-center text-5xl sm:text-6xl font-extrabold text-white tracking-wide mb-16">
         <span className="text-green-500">Recruiter</span> View 🧑‍💼
       </h1>
 
-      {/* Resume */}
-      <section className="mb-20 text-center">
-        <h2 className="text-3xl font-semibold mb-4 border-b-2 border-zinc-700 inline-block">Resume</h2>
-        <p className="text-zinc-400 mb-4">Download my resume directly:</p>
-        <a
-          href="/Sharan_Resume.pdf"
-          download
-          className="inline-block px-6 py-3 bg-green-600 hover:bg-green-700 transition rounded-full text-white font-semibold"
-        >
-          Download Resume
-        </a>
-      </section>
-
-      {/* Skills */}
-      <section className="mb-20 text-center">
-        <h2 className="text-3xl font-semibold mb-6 border-b-2 border-zinc-700 inline-block">Tech Skills</h2>
-        <div className="flex flex-wrap justify-center gap-4 mt-4">
-          {skills.map((skill, idx) => (
-            <span
-              key={idx}
-              className="bg-green-700/20 border border-green-600 px-4 py-2 rounded-full text-sm font-medium text-green-300"
-            >
-              {skill}
-            </span>
-          ))}
+      {/* About Me Section */}
+      <div className="bg-zinc-950 text-white min-h-screen p-10 pt-10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-green-500">
+            About Me
+          </h1>
+          <p className="text-zinc-300 text-lg leading-relaxed">
+            I'm <span className="text-white font-semibold">Sharan Chinthoju</span>,
+            a passionate and creative full-stack web developer who loves
+            building modern, interactive, and clean web experiences. With a
+            strong foundation in the MERN stack, I enjoy turning ideas into
+            digital reality.
+          </p>
+          <p className="text-zinc-400 mt-4 text-base">
+            From building clones like Netflix and Spotify to AI-powered apps
+            like Chef Claude, I constantly strive to improve and keep my code
+            elegant and purposeful. When I'm not coding, I'm likely exploring
+            design trends or polishing my projects.
+          </p>
         </div>
-      </section>
 
-      {/* Contact */}
-      <section className="text-center">
-        <h2 className="text-3xl font-semibold mb-4 border-b-2 border-zinc-700 inline-block">Contact</h2>
-        <p className="text-zinc-300 mb-2">📧 chinthojusharan@gmail.com</p>
-        <p className="text-zinc-300">🔗 <a href="https://www.linkedin.com/in/sharan-chinthoju-16067331b" target="_blank" className="text-blue-400 hover:underline">LinkedIn Profile</a></p>
+        {/* Projects Section */}
+        <section className="mb-10 mx-auto text-center pt-28">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-green-500">
+            Projects
+          </h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {projects.map((project) => (
+              <Link to={`/projects/${project.slug}`} key={project.slug}>
+                <div className="backdrop-blur bg-white/5 border border-zinc-800 p-4 rounded-xl shadow-lg hover:scale-[1.03] hover:shadow-[0_0_20px_4px_rgba(34,197,94,0.5)] transition-all duration-300">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="rounded-lg mb-4 h-40 w-full object-cover border border-zinc-700"
+                  />
+                  <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
+                  <p className="text-sm text-zinc-400 mb-3">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 text-xs text-zinc-300 mb-4">
+                    {project.techStack.split(",").map((tech, i) => (
+                      <span
+                        key={i}
+                        className="bg-green-600/20 px-2 py-1 rounded-full"
+                      >
+                        {tech.trim()}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-4 text-sm">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        className="text-blue-400 hover:underline"
+                      >
+                        GitHub
+                      </a>
+                    )}
+                    {project.demo && project.demo !== "" && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        className="text-green-400 hover:underline"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Tech Stack */}
+        <div className="max-w-4xl mx-auto mt-12">
+          <h2 className="text-3xl font-semibold mb-4 text-green-500 text-center">
+            Tech Stack I Use
+          </h2>
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-zinc-200">
+            <span className="bg-zinc-800 px-4 py-2 rounded-xl">HTML</span>
+            <span className="bg-zinc-800 px-4 py-2 rounded-xl">CSS</span>
+            <span className="bg-zinc-800 px-4 py-2 rounded-xl">JavaScript</span>
+            <span className="bg-zinc-800 px-4 py-2 rounded-xl">TailwindCSS</span>
+            <span className="bg-zinc-800 px-4 py-2 rounded-xl">React</span>
+            <span className="bg-zinc-800 px-4 py-2 rounded-xl">Node.js</span>
+            <span className="bg-zinc-800 px-4 py-2 rounded-xl">Express</span>
+            <span className="bg-zinc-800 px-4 py-2 rounded-xl">MongoDB</span>
+            <span className="bg-zinc-800 px-4 py-2 rounded-xl">OpenAI API</span>
+            <span className="bg-zinc-800 px-4 py-2 rounded-xl">GitHub</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <section>
+        <div className="bg-zinc-950 text-white py-16 px-6" id="contact">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-green-500 mb-6">Hire Me</h2>
+            <p className="text-zinc-300 mb-10 text-lg">
+              I'm actively looking for opportunities — if my work matches with what you're hiring for, I'd love to hear from you.
+            </p>
+
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-zinc-300 text-base">
+              {/* Email */}
+              <a
+                href="mailto:chinthojusharan@gmail.com"
+                className="flex items-center gap-2 hover:text-green-400 transition"
+              >
+                <FaEnvelope className="text-lg" />
+                chinthojusharan@gmail.com
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/sharan-chinthoju-16067331b/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-green-400 transition"
+              >
+                <FaLinkedin className="text-lg" />
+                LinkedIn
+              </a>
+
+              {/* Twitter */}
+              <a
+                href="https://x.com/chinthojusharan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-green-400 transition"
+              >
+                <FaTwitter className="text-lg" />
+                Twitter
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Optional Contact Form (reused as-is) */}
+        <form
+          action="https://formspree.io/f/mvgrevyw"
+          method="POST"
+          className="mt-5 max-w-xl mx-auto space-y-4"
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            className="w-full bg-zinc-800 p-3 rounded-md outline-none"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+            className="w-full bg-zinc-800 p-3 rounded-md outline-none"
+          />
+          <textarea
+            name="message"
+            rows="4"
+            placeholder="Your Message"
+            required
+            className="w-full bg-zinc-800 p-3 rounded-md outline-none resize-none"
+          />
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="bg-green-600 hover:bg-green-700 px-6 py-2 rounded-md text-white font-semibold transition"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
       </section>
     </div>
   );
